@@ -22,3 +22,10 @@ config.gypi
 node_modules
 __pycache__
 venv
+# Add these lines to exclude unnecessary files
+**/node_modules/*
+!**/node_modules/@your-project/*
+**/*.test.js
+**/*.spec.js
+**/*.log
+**/coverage
