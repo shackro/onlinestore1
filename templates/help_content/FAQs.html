@@ -1,0 +1,127 @@
+{% load static %}
+
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .accordion {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .accordion-header::after {
+            content: "+";
+            font-size: 20px;
+            color: #555;
+            position: absolute;
+            right: 15px; /* Adjusts the position of the "+" */
+        }
+
+        .accordion-header.active::after {
+            content: "-";
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 15px; /* Padding is collapsed initially */
+        }
+
+        .accordion-content p {
+            margin: 15px 0; /* Spacing for the paragraph inside */
+        }
+
+        .accordion-header.active + .accordion-content {
+            max-height: 200px; /* Adjust based on your content length */
+            padding-top: 15px; /* Add padding when expanded */
+        }
+    </style>
+
+<body>
+
+<div class="accordion">
+    
+    <!-- Accordion Item 1 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            Topic 1
+        </div>
+        <div class="accordion-content">
+            <p>Detailed information about Topic 1 goes here. You can provide more in-depth explanations, examples, or any other relevant information.</p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 2 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            Topic 2
+        </div>
+        <div class="accordion-content">
+            <p>Detailed information about Topic 2 goes here. You can provide more in-depth explanations, examples, or any other relevant information.</p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 3 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            Topic 3
+        </div>
+        <div class="accordion-content">
+            <p>Detailed information about Topic 3 goes here. You can provide more in-depth explanations, examples, or any other relevant information.</p>
+        </div>
+    </div>
+
+    <br> <br> <br> <br> <br> <br>
+</div>
+
+<script>
+    // JavaScript to handle accordion toggle
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            // Toggle active state on clicked header
+            header.classList.toggle('active');
+
+            // Collapse all other items
+            document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                if (otherHeader !== header) {
+                    otherHeader.classList.remove('active');
+                    otherHeader.nextElementSibling.style.maxHeight = null; // Collapse content
+                }
+            });
+
+            // Toggle accordion content visibility
+            const content = header.nextElementSibling;
+            if (header.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.paddingTop = '15px';
+                content.style.paddingBottom = '15px';
+            } else {
+                content.style.maxHeight = null; // Collapse content
+                content.style.paddingTop = '0';
+                content.style.paddingBottom = '0';
+            }
+        });
+    });
+</script>
+
+</body>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Edit Profile {% endblock title %}
+{% block content %}
+<div class="container my-5 ">
+    <div class="row ">
+        <br><br>
+        <h3 class="head"><b>Welcome</b> <span class="text-capitalize">{{ request.user }}</span></h3>
+        <br><br>
+        <div class="col-sm-6 offset-sm-1"><br><br><br>
+            {% if form %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="col-12 mt-3">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="{% url 'profile' %}" type="button" class="btn btn-danger">Back To Profile</a>
+                    </div>
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p class="alert alert-danger my-3">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}    
+                </form>
+            {% else %}  
+                <p> There is no user information to edit. </p>  
+                <a href="{% url 'profile' %}" type="button" class="btn btn-danger">Back To Profile</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+

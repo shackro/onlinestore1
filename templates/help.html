@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title%} Help {%endblock title%}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% block content %}
+<main>
+    <style>
+        .clickable-row {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+        .clickable-row2 {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+
+        .clickable-row:hover {
+            background-color: #e9ecef; /* Change background on hover */
+        }
+
+        .arrow {
+            font-size: 25px;
+            color: yellowgreen; /* Arrow color */
+        }
+
+        .full-page-content {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 210px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .full-page-content {
+                display: none !important; /* Hide full-page content on desktop */
+            }
+
+        .dropdown-menu {
+            z-index: 1001; /* Ensure dropdowns appear above full-page content */
+        }  
+        }
+    </style>
+<br><br>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Consistent Header -->
+            <div class="col-md-12 bg-warning">
+                <h2>Help Center</h2>
+                <p>Hi, how can we help you?</p>
+                <hr>
+            </div>
+
+            <!-- First Column (Links) -->
+            <div class="col-md-4" id="links-column">
+                <h2>Guide</h2>
+                <a href="#" class="clickable-row" data-content-id="placeorder">
+                    <span>Place an Order</span>
+                    <span class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill bi-warning" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                    </span> <!-- Right arrow -->
+                </a>
+
+                <a href="#" class="clickable-row" data-content-id="howtopay">
+                    <span>How to Pay</span>
+                    <span class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill bi-warning" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                    </span><!-- Right arrow -->
+                </a>
+
+                <a href="#" class="clickable-row" data-content-id="trackorder">
+                    <span>Track Your Order</span>
+                    <span class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill bi-warning" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                    </span><!-- Right arrow -->
+                </a>
+
+                <a href="#" class="clickable-row" data-content-id="cancelorder">
+                    <span>Cancel order</span>
+                    <span class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill bi-warning" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                    </span><!-- Right arrow -->
+                </a>
+
+                <a href="#" class="clickable-row" data-content-id="returnandrefund">
+                    <span>Return And Refunds</span>
+                    <span class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill bi-warning" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                    </span><!-- Right arrow -->
+                </a>
+
+                <hr style="border:3px dark solid;">
+                <h4 class="mt-4">More about</h4>
+                <a href="{% url 'subFQAs'%}" class="clickable-row2" >
+                    <span>Frequently Asked Questions ??</span>
+                    <span class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill bi-warning" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                    </span> <!-- Right arrow -->
+                </a>
+
+                <a href="#"class="clickable-row" data-content-id="faq2-content">
+                    <span>How do I reset my password?</span>
+                    <span class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill bi-warning" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                    </span> <!-- Right arrow -->
+                </a>
+            </div>
+
+            <!-- Second Column (Dynamic Content) -->
+            <div class="col-md-8" id="content-column">
+                <h4>Help</h4>
+                <div id="content-area" class="content-area">
+                    <!-- Default content or message -->
+                    <h3>
+                    Apple Online Store</h3>
+                    <p>
+                    <a href="{% url 'home'%}"> OnlineTech</a> is a convenient place to purchase Apple products and accessories from Apple and other manufacturers. You can buy online or contuct our agents for more arrengement through whatsapp or any of the active social media plaforms always active 24/7.
+
+                    You can get information about an order you placed on our Online Store through the Order Status page on your <a href="{% url 'profile'%}">Profile</a>. If you prefer, you can also get order status or make changes by contacting our agents.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-Page Content for Mobile -->
+    <div id="full-page-content" class="full-page-content">
+        <button class="btn btn-secondary back-button" onclick="goBackToLinks()"> 
+        <span class="arrow text-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill bi-warning" viewBox="0 0 16 16"><path d="M3.14 8.753l5.482-4.796c.646-.566 1.658-.106 1.658.753v10.588a1 1 0 0 1-1.659.753l-5.48-4.796a1 1 0 0 1 0-1.506z"/></svg></span>
+        Back to All Topics</button>
+        <div id="full-page-content-area"></div>
+    </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+        async function loadContent(contentId) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const contentArea = document.getElementById('content-area');
+            const fullPageContentArea = document.getElementById('full-page-content-area');
+            const fullPageContent = document.getElementById('full-page-content');
+            
+            let content = '';
+
+            // Map contentId to the corresponding URL
+            const contentFiles = {
+                'placeorder': '/subhelp1/',
+                'howtopay': '/how_to_pay/',
+                'trackorder': '/track_order/',
+                'cancelorder': '/cancel_order/',
+                'returnandrefund': '/return_and_refund/',
+                'faq1-content': '/FAQS/',
+                'faq2-content': '/subhelp1/'
+            };
+
+            const filePath = contentFiles[contentId];
+
+            if (filePath) {
+                try {
+                    const response = await fetch(filePath);
+                    if (!response.ok) throw new Error('Failed to load content');
+                    content = await response.text();
+                } catch (error) {
+                    console.error(error);
+                    content = '<p>Error loading content. Please try again later.</p>';
+                }
+            } else {
+                content = '<p>No content available.</p>';
+            }
+
+            contentArea.innerHTML = content;
+
+            if (window.innerWidth <= 768) {
+                document.getElementById('links-column').style.display = 'none';
+                document.getElementById('content-column').style.display = 'none';
+                fullPageContent.style.display = 'block';
+                fullPageContentArea.innerHTML = content;
+            }
+        }
+
+        function goBackToLinks() {
+            const fullPageContent = document.getElementById('full-page-content');
+            fullPageContent.style.display = 'none';
+            document.getElementById('links-column').style.display = 'block';
+            document.getElementById('content-column').style.display = 'block';
+        }
+
+        // Event delegation for clickable rows
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('clickable-row')) {
+                const contentId = event.target.getAttribute('data-content-id');
+                loadContent(contentId);
+            }
+        });
+    </script>
+
+{% endblock %}

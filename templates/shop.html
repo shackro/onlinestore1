@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+<main>
+  <div class="container">
+    <section class="mt-5 wow fadeIn">
+      <div>
+        <h4 class="section-title">Shop</h4>
+        <nav class="Searchup">
+          <div>
+            <h5 style="font-weight: 400;" class="mt-4">Search here...</h5>
+            <form class="form-inline active-cyan-4">
+              <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                aria-label="Search">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </form>
+          </div>
+        </nav>
+      </div>
+      <div class="shop-container">
+        <div class="shop-content">
+          <div class="header-paragraph">
+            <p class="text-center">
+          <!-- Search form -->
+
+          <!-- Search form -->
+
+            </p>
+          </div>
+
+          <!-- image row -->
+          <div class="shop-img row">
+            <div class="col-12  align-items-stretch mb-4">
+            {% for item in items %}
+            <div class="shop-image-div"><a href="{% url 'detail' item.slug %}">
+              <img src="{{item.image.url}}" class="shop-image rounded">
+              <p class="text-center" style="font-weight: 400; font-size:23px;">{{item.title}}</p></a>
+              <div class="text-center">
+                <b>{{item.color}}</b><br>
+                
+              </div>
+            </div>
+            <hr style="border:1px black solid;">
+            {% endfor %}
+          </div>
+          <br><br>
+          <!-- image row -->
+          </div>
+        </div>
+       </div>
+      
+    </section>
+  </div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{%load static%}
+{%block title%} Search {%endblock title%}
+ 
+
+{% block content %}
+<div class="main-container" >
+    <section class="wow fadeIn">
+          <h2>Search Results for "{{ query }}"</h2> 
+       <hr style="border: 2px black solid;">
+      <div class="container text-center start" style="font-size: 10px;">
+        <div class="row">
+          {% for item in results %}
+          <div class="col-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">
+            <a href="{% url 'detail' item.slug %}">
+                          {% if item.on_sale %}
+                <h5><span class="label-right badge badge-primary" >Onsale</span></h5>
+              {% endif %}
+            <div class="card" style="width: 100%;">
+              
+                <img src="{{ item.image.url }}" class="card-img-top" alt="">
+              
+              <div class="card-body">
+                <div class="best-img" style="position: relative;">
+                  <h6 class="text-center mt-3"><b>{{ item.title }}</b></h6>
+                  {{ item.color }}
+                  <hr style="border: 1px yellow solid;">
+                  {% if item.on_sale %}
+                    <p class="rating text-center mt-0">
+                      <b style="font-weight: 450;">${{ item.discount_price }}</b>
+                      <del class="text-muted text-danger"><b>${{ item.price }}</b></del>
+                    </p>
+                  {% else %}
+                    <p class="rating text-center mt-0">
+                      <b style="font-weight: 450;">${{ item.price }}</b>
+                    </p>
+                  {% endif %}
+  
+  
+                  <p class="rating text-center mt-0 pt-0 py-0">
+                {% if item.rating.value == 5 %}
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                {% endif %}
+                {% if item.rating.value == 4 %}
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="far fa-star text-warning"></i></span>
+                {% endif %}
+                {% if item.rating.value == 3 %}
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="far fa-star text-warning"></i></span>
+                <span><i class="far fa-star text-warning"></i></span>
+                {% endif %}
+                {% if item.rating.value == 2 %}
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="fas fa-star text-warning"></i></span>
+                <span><i class="far fa-star text-warning"></i></span>
+                <span><i class="far fa-star text-warning"></i></span>
+                <span><i class="far fa-star text-warning"></i></span>
+                {% endif %}
+  
+  
+              </p>
+              {{item.inform}}
+  
+                </div>
+              </div>
+            </div></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock content %}

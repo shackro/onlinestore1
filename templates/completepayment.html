@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+<div class="container text-center">
+    <h2 class="h2 text-center mt-5 mb-5">Complete Payment</h2>  
+    <div class="row align-items-center">
+
+        
+     <div class="col-md-10 mb-4">
+      {% include "order_snippet.html" %}
+    </div>
+    <hr style="border:2px black solid;">
+
+<a href="{% url 'payment_complete'%}">complete payment</a>
+</div>
+</div>
+{% endblock content %}

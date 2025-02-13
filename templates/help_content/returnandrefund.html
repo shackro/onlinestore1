@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Request a Refund or Return</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+        }
+        .step {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">How to Request a Refund or Return</h2>
+    <p>If you are not satisfied with your order, you can request a refund or return following these steps.</p>
+
+    <h2>Return & Refund Steps</h2>
+    
+    <div class="step">
+        <h3>Step 1: Check Return Eligibility</h3>
+        <ul>
+            <li>Ensure the item is eligible for return. Check Our return policy.</li>
+            <li>The item should be in its original condition with packaging intact.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Log in to Your Jumia Account</h3>
+        <ul>
+             <li>Go to <a href="{% url 'home' %}">Onlinetech.com</a> and log in to your account.</li>
+            <li>Enter your email and password to access your orders.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Navigate to "My Orders"</h3>
+        <ul>
+            <li>Click on your profile icon and select "My Orders."</li>
+            <li>Find the order containing the item you wish to return.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Request a Return</h3>
+        <ul>
+            <li>Select the item and click "Return Item."</li>
+            <li>Choose the reason for the return and submit your request.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Return the Item</h3>
+        <ul>
+            <li>Follow the return instructions provided.</li>
+            <li>Drop off the item at the designated return center or arrange for pickup if applicable.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Receive Your Refund</h3>
+        <ul>
+            <li>Once the item is received and verified, We will process your refund.</li>
+            <li>Refunds are issued via the original payment method or as store credit.</li>
+        </ul>
+    </div>
+
+    <p>If you have any questions or issues, contact Our customer support at 0711 011 011 for assistance.</p>
+</div>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+</body>
+</html>

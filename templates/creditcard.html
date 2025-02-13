@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+
+<div class="">
+    <h2 class="h2 text-center ">Credit Card payment Option</h2>  
+    <div class="row align-items-center">
+      <div class="col align-items-center" style="">
+      <div class="card " style="height:100%;">
+             <div class="col-md-10 mb-4">
+      {% include "order_snippet.html" %}
+    </div>
+    <hr style="border:2px black solid;">
+        <div class="card-body mt-0">
+    <!-- Square Payment Form -->
+    <form action="{% url 'square-payment' %}" method="GET">
+        <button type="submit" class= " btn-success"style="border-radius: 30px; width: 100%;">Pay with Square</button>
+    </form>
+
+        </div>
+      </div>
+
+    <hr style="border:2px black solid;">
+    </div>
+</div>
+
+</div>
+{% endblock content %}
+{% comment %} <a href="{% url 'payment-complete'%}">complete payment</a> {% endcomment %}

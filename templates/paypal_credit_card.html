@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+<header>
+    <script
+    src="https://www.paypal.com/sdk/js?client-id=CLIENT_ID&components=messages,buttons"
+    data-namespace="PayPalSDK">
+    </script>
+</header>
+
+<style type="text/css">
+.paypal-btn {
+    background: #ffc439;
+    color: #002d74;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.paypal-btn:hover {
+    background: #ffb300;
+}
+
+.card-btn {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.card-btn:hover {
+    background: #333;
+}
+</style>
+
+<div class="container text-center">
+    <h2 class="h2 text-center mt-5 mb-5">Complete Your Payment</h2>  
+    <h1>Pay with PayPal</h1>
+    <div class="row align-items-center">
+        <div class="col-md-10 mb-4">
+            {% include "order_snippet.html" %}
+        </div>
+        <hr style="border:2px black solid;">
+        
+ 
+        <h1>Pay with Credit or Debit Card</h1>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="POST">
+            {% csrf_token %}
+            <button type="submit" name="card-btn" class="card-btn">Debit or Credit Card</button>
+        </form>
+
+        <p style="text-align: center; font-size: 12px; color: #777;">Powered by <b>PayPal</b></p>
+    </div>
+</div>
+
+{% endblock content %}

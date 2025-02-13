@@ -1,0 +1,325 @@
+{% load static %}
+{% load cart_template_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="icon" href="{% static 'svgs.images/apple-svgrepo-com.svg' %}" type="image/svg+xml">
+    <title>OnlineTech</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+  </head>
+      <style>
+        body {
+            
+            font-family: 'Arial', sans-serif;
+        }
+        .offcanvas-body {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+        .faq-item:hover {
+            background-color: #e9ecef;
+        }
+        .faq-item h6 {
+            color: #007bff;
+            cursor: pointer;
+        }
+        .faq-item div {
+            margin-top: 10px;
+            color: #333333;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top bg-dark-subtle elegant-color scrolling-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'svgs.images/apple-svgrepo-com (1).svg' %}" alt="log" style="width: 50px; height: 50px; border-radius:50%;"></a>
+            <!-- <div class="dropdown left text-center"> 
+               <img src="{% static 'svgs.images/search-svgrepo-com.svg' %}" alt="" style="width: 30px; height: 30px; color:white;"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="dropdown-menu dropdown-menu-center  text-white" aria-labelledby="dropdownMenuButtonp">
+
+                <form class="dropdown-item text-white center" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"><br>
+                  <a href="{% url 'search' %}" class="btn btn-outline-success btn-bg-success" type="submit" style="width: 100%;" ><img src="{% static 'svgs.images/search-svgrepo-com.svg' %}" alt="search" style="width: 26px; height: 25px; ">
+                 </a>
+                </form> 
+              </div>
+            </div> -->
+
+            {% if user.is_authenticated %}
+              <a href="{% url 'order_summary' %}" class="text-warning">
+                <span class="badge red z-depth-1 rounded">{{request.user|cart_item_count}}</span>
+                <i class="fas fa-shopping-cart "></i>
+              </a>
+              
+
+            {% endif %}
+          
+
+          
+
+
+
+            <div class="dropdown text-center"> 
+              <button class="btn btn-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 20px;">      
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-menu-button-wide" viewBox="0 0 16 16" >
+                <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5z"/>
+                <path d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0M0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
+              </svg></button> 
+              <div class="dropdown-menu bg-dark text-white" aria-labelledby="dropdownMenuButtonp">
+                <br>{% if user.is_authenticated %}
+                      <a class="dropdown-item bg-success text-white" href="{% url 'profile' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+  <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+  <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z"/>
+</svg>  
+Profile</a>
+                <hr style="border: 2px darkgray solid;">
+                    {% endif%}
+                      <a class="dropdown-item text-white" href="{% url 'all_products' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-check" viewBox="0 0 16 16">
+  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514"/>
+  <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1z"/>
+  <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+</svg>  All Products</a>
+                <hr style="border: 2px darkgray solid;">
+                      <a class="dropdown-item bg-danger text-white" href="{% url 'onsale' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
+  <path d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5"/>
+</svg>  Products On_Sale </a>
+                <hr style="border: 2px darkgray solid;">
+                        <a class="dropdown-item bg-warning text-white" href="{% url 'refubrished' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+</svg>    Refurbished</a>
+                <hr style="border: 2px darkgray solid;">
+                        <a class="dropdown-item bg-success text-white" href="{% url 'Smartwatch' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-smartwatch" viewBox="0 0 16 16">
+  <path d="M9 5a.5.5 0 0 0-1 0v3H6a.5.5 0 0 0 0 1h2.5a.5.5 0 0 0 .5-.5z"/>
+  <path d="M4 1.667v.383A2.5 2.5 0 0 0 2 4.5v7a2.5 2.5 0 0 0 2 2.45v.383C4 15.253 4.746 16 5.667 16h4.666c.92 0 1.667-.746 1.667-1.667v-.383a2.5 2.5 0 0 0 2-2.45V8h.5a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5H14v-.5a2.5 2.5 0 0 0-2-2.45v-.383C12 .747 11.254 0 10.333 0H5.667C4.747 0 4 .746 4 1.667M4.5 3h7A1.5 1.5 0 0 1 13 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 11.5v-7A1.5 1.5 0 0 1 4.5 3"/>
+</svg>    Smartwatch</a>
+                  <hr style="border: 2px darkgray solid;">
+                        <a class="dropdown-item bg-success text-white" href="{% url 'Case' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone-flip" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11 1H5a1 1 0 0 0-1 1v6a.5.5 0 0 1-1 0V2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a.5.5 0 0 1-1 0V2a1 1 0 0 0-1-1m1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a.5.5 0 0 0-1 0v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2a.5.5 0 0 0-1 0zM1.713 7.954a.5.5 0 1 0-.419-.908c-.347.16-.654.348-.882.57C.184 7.842 0 8.139 0 8.5c0 .546.408.94.823 1.201.44.278 1.043.51 1.745.696C3.978 10.773 5.898 11 8 11q.148 0 .294-.002l-1.148 1.148a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708l1.145 1.144L8 10c-2.04 0-3.87-.221-5.174-.569-.656-.175-1.151-.374-1.47-.575C1.012 8.639 1 8.506 1 8.5c0-.003 0-.059.112-.17.115-.112.31-.242.6-.376Zm12.993-.908a.5.5 0 0 0-.419.908c.292.134.486.264.6.377.113.11.113.166.113.169s0 .065-.13.187c-.132.122-.352.26-.677.4-.645.28-1.596.523-2.763.687a.5.5 0 0 0 .14.99c1.212-.17 2.26-.43 3.02-.758.38-.164.713-.357.96-.587.246-.229.45-.537.45-.919 0-.362-.184-.66-.412-.883s-.535-.411-.882-.571M7.5 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+</svg>    Case</a>
+                <hr style="border: 2px darkgray solid;">
+
+
+                  {% if user.is_authenticated %}
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn bg-danger"><img src="{% static 'svgs.images/logout-multimedia-ui-svgrepo-com.svg' %}" alt="" style="width: 20px; height: 20px; ">Logout</button>
+                 </form>
+                <hr style="border: 2px darkgray solid;">
+
+                  {% else %}
+
+                          <a class="dropdown-item bg-primary text-white" href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+  <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+</svg>    Sign In</a>
+
+                <hr style="border: 2px darkgray solid;">
+
+                          <a class="dropdown-item bg-primary text-white" href="{% url 'signup' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+  <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+  <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
+</svg>    Sign Up</a>
+
+                <hr style="border: 2px darkgray solid;">
+
+              </div>
+                {% endif %}
+            </div>
+      </div>
+
+    </nav>
+    <!-- Navbar -->
+
+    <div class="mt-5 pt-4">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <footer class="page-footer font-small elegant-color-dark">
+      <div style="background-color: #1d1d1d;">
+        <div class="container">
+          <div class="row py-4 d-flex align-items-center">
+            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+              <h6 class="mb-0">Get connected with us on social networks!</h6>
+            </div>
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+              <a class="fb-ic">
+                <i class="fab fa-facebook-f white-text mr-4"> </i>
+              </a>
+              <a class="tw-ic">
+                <i class="fab fa-twitter white-text mr-4"> </i>
+              </a>
+              <a class="gplus-ic">
+                <i class="fab fa-google-plus-g white-text mr-4"> </i>
+              </a>
+              <a class="li-ic">
+                <i class="fab fa-linkedin-in white-text mr-4"> </i>
+              </a>
+              <a href="#" class="ins-ic">
+                <i class="fab fa-instagram white-text"> </i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="container text-center text-md-left mt-5">
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-6">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+            {% if user.is_authenticated %}
+            <p>
+              <a href="{% url 'profile'%}">Your Profile</a>
+            </p>{% endif %}
+            <p>
+              <a href="{% url 'shippingrates'%}">Shipping Rates</a>
+            </p>
+            <p>
+              <a href="{% url 'terms'%}">Terms and Conditions</a>
+            </p>
+            <p>
+              <a href="{% url 'help'%}">Help</a>
+            </p>            
+            <p>
+              <a type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">FAQS</a>
+              </p>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold">Contact</h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+            <p><i class="fas fa-home mr-3"></i>ngware Congo, randa</p>
+            <p><i class="fas fa-envelope mr-3"></i> Tech@OnlineTech.com</p>
+            <p><i class="fas fa-phone mr-3"></i> +254 234 567 88</p>
+            <p><i class="fas fa-print mr-3"></i> +254 456 909 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row  -->
+      </div>
+
+          <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Frequently ask Questions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+    <div class="offcanvas-body">
+        <div class="navlink1">
+            <div class="faq-item">
+                <h6 onclick="toggleAnswer('faq1')">1. How do I set up my new iPhone?</h6>
+                <div id="faq1" style="display:none;">To set up your new iPhone, turn it on and follow the on-screen instructions. You can restore from a backup or set it up as a new device. For more details, visit the <a href="https://support.apple.com/iphone" class="text-success">--->>>For more Inform</a>.</div>
+            </div>
+            <div class="faq-item">
+                <h6 onclick="toggleAnswer('faq2')">2. Can I use my old iPhone case for my new iPhone?</h6>
+                <div id="faq2" style="display:none;">Most likely not, as iPhone models have different dimensions and button placements. It's best to purchase a case specifically designed for your new model. For compatibility details, see our guide on <a href="https://casecoinc.com/blogs/news/iphone-case-compatibility-a-guide-to-finding-the-right-fit"class="text-success">--->>>iPhone case compatibility</a>.</div>
+            </div>
+            <div class="faq-item">
+                <h6 onclick="toggleAnswer('faq3')">3. How do I transfer data from my old iPhone to my new one?</h6>
+                <div id="faq3" style="display:none;">You can transfer data using Quick Start by placing your old iPhone near your new one or by restoring from an iCloud or iTunes backup. For step-by-step instructions, visit the <a href="https://support.apple.com/en-us/HT201365"class="text-success">--->>>For more Inform</a>.</div>
+            </div>
+            <div class="faq-item">
+                <h6 onclick="toggleAnswer('faq4')">4. What should I do if my iPhone won't turn on?</h6>
+                <div id="faq4" style="display:none;">Try charging your iPhone for at least 15 minutes. If it still doesn't turn on, try a force restart or check for hardware issues. More troubleshooting steps can be found on the <a href="https://support.apple.com/en-us/HT201412"class="text-success">--->>>For more Inform</a>.</div>
+            </div>
+            <div class="faq-item">
+                <h6 onclick="toggleAnswer('faq5')">5. How do I set up my Apple Watch with my iPhone?</h6>
+                <div id='faq5' style='display:none;'>To set up your Apple Watch, ensure Bluetooth is enabled on your iPhone and follow the prompts in the Apple Watch app on your device. For detailed setup instructions, visit the <a href='https://support.apple.com/en-us/HT204507'class="text-success">--->>>For more Inform</a>.</div> 
+            </div> 
+            <div class='faq-item'>
+                <h6 onclick='toggleAnswer("faq6")'>6. How do I find the right case for my iPhone model?</h6> 
+                <div id='faq6' style='display:none;'>Check the specifications of your iPhone model and choose a case that matches its dimensions and features. Refer to our detailed guide on compatibility at <a href='https://eu.pelacase.com/blogs/news/iphone-case-compatibility'class="text-success">--->>>For more Inform</a>.</div> 
+             </div> 
+             <div class='faq-item'>
+                <h6 onclick='toggleAnswer("faq7")'>7. Can I use my Apple Watch without an iPhone?</h6> 
+                <div id='faq7' style='display:none;'>While some features require an iPhone, you can use your Apple Watch independently for fitness tracking and certain apps once it's set up with Wi-Fi or cellular service.</div> 
+             </div> 
+             <div class='faq-item'>
+                <h6 onclick='toggleAnswer("faq8")'>8. What is the battery life of the latest iPhones?</h6> 
+                <div id='faq8' style='display:none;'>The battery life varies by model; newer models typically offer longer usage times due to improved battery technology. For specifics on each model's battery life, see the official specifications on Apple's website.</p></p> 
+             </div> 
+             <div class=' faq-item'> 
+                 <h6 onclick='toggleAnswer(" faq9")' style='cursor:pointer;'>9. How do I clean my iPhone screen safely?</h6> 
+                 <div id=' faq9' style='display:none;'>Use a microfiber cloth slightly dampened with water or a screen-safe cleaner to gently wipe the screen without damaging it.</div> 
+             </div> 
+             <div class=' faq-item'> 
+                 <h6 onclick='toggleAnswer(" faq10")' style='cursor:pointer;'>10. What should I do if my Apple Watch is not syncing with my iPhone?</h6> 
+                 <div id=' faq10' style='display:none;'>Ensure both devices are updated to the latest software version and that Bluetooth is enabled on your iPhone. Restart both devices if necessary.</div> 
+             </div> 
+         </div>  
+    </div>
+  </div>
+      <!-- Footer Links -->
+    
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">
+        © 2024 Allrightsreserved:
+        <a href="https://mdbootstrap.com/"> OnlineTech.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+<script type='text/javascript'>
+    function toggleAnswer(faqId) {
+        const answer = document.getElementById(faqId);
+        answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+    <script type="text/javascript"src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+
+    <script type="text/javascript"src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  </body>
+</html>
+
+
+

@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Place an Order</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+        }
+        .step {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">How to Place an Order </h2>
+    <p>Follow these simple steps to place an order.</p>
+
+    <h2>Ordering Steps</h2>
+    
+    <div class="step">
+        <h3>Step 1: Log in to Your Account</h3>
+        <ul>
+            <li>Go to <a href="{% url 'home' %}">Onlinetech.com</a> and log in to your account.</li>
+            <li>If you don’t have an account, sign up with your email and create a password.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Browse and Select Items</h3>
+        <ul>
+            <li>Use the search bar or categories to find the items you want.</li>
+            <li>Click on a product to view details, price, and availability.</li>
+            <li>Click "Add to Cart" to add the item to your shopping cart.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Proceed to Checkout</h3>
+        <ul>
+            <li>Click on the cart icon and review your selected items.</li>
+            <li>Click "Proceed to Checkout" when you’re ready to order.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Enter Shipping Details</h3>
+        <ul>
+            <li>Provide your delivery address and contact details.</li>
+            <li>Choose your preferred delivery method.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Choose Payment Method</h3>
+        <ul>
+            <li>Select your preferred payment option:
+                <ul>
+                    <li>Credit/Debit Card</li>
+                    <li>Mobile Money</li>
+                    <li>Cash on Delivery (if available)</li>
+                    <li>Voucher Code</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Confirm and Place Order</h3>
+        <ul>
+            <li>Review your order summary and total cost.</li>
+            <li>Click "Place Order" to complete your purchase.</li>
+            <li>You will receive a confirmation email with order details.</li>
+        </ul>
+    </div>
+
+    <p>If you have any issues, contact Our customer support at 0711 011 011 for assistance.</p>
+</div>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,304 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{%block title%} FAQs {%endblock title%}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><link rel="stylesheet" href="{% static 'main.css' %}">
+{% block content %}
+
+
+<main><br>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .accordion {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .accordion-header::after {
+            content: "+";
+            font-size: 20px;
+            color: #555;
+            position: absolute;
+            right: 15px; /* Adjusts the position of the "+" */
+        }
+
+        .accordion-header.active::after {
+            content: "-";
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 15px; /* Padding is collapsed initially */
+        }
+
+        .accordion-content p {
+            margin: 15px 0; /* Spacing for the paragraph inside */
+        }
+
+        .accordion-header.active + .accordion-content {
+            max-height: 200px; /* Adjust based on your content length */
+            padding-top: 15px; /* Add padding when expanded */
+        }
+        h1{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="accordion">
+    <h1>FAQs </h1>
+    <!-- Accordion Item 1 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            1. What is the battery life of the latest iPhone?
+        </div>
+        <div class="accordion-content">
+            <p>
+                The latest iPhone models typically offer up to 20 hours of video playback and all-day battery life depending on usage. Specific performance may vary based on settings and usage.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 2 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            2. How do I update my iPhone's software?
+        </div>
+        <div class="accordion-content">
+            <p>
+                To update your iPhone, go to Settings > General > Software Update. If an update is available, follow the on-screen instructions to download and install it.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 3 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            3. How do I pair my iWatch with my iPhone?
+        </div>
+        <div class="accordion-content">
+            <p>
+                To pair your Apple Watch with your iPhone, ensure both devices are charged. Open the Apple Watch app on your iPhone and follow the pairing instructions displayed on both devices.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 4 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            4. How can I troubleshoot connectivity issues between my iWatch and iPhone?
+        </div>
+        <div class="accordion-content">
+            <p>
+                Start by ensuring that Bluetooth and Wi-Fi are enabled on both devices. If issues persist, try restarting both your iPhone and Apple Watch, or unpair and re-pair them using the Apple Watch app.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 5 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            5. What features does the latest iWatch offer?
+        </div>
+        <div class="accordion-content">
+            <p>
+                The newest Apple Watch models feature advanced health monitoring, fitness tracking, improved performance, always-on display, and cellular connectivity options. They also integrate seamlessly with the iPhone.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 6 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            6. How do I reset my iPhone?
+        </div>
+        <div class="accordion-content">
+            <p>
+                You can reset your iPhone by going to Settings > General > Reset. Choose the appropriate reset option (e.g., Reset All Settings, Erase All Content and Settings) based on your needs. Be sure to backup your data before a full reset.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 7 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            7. How can I backup my iPhone data?
+        </div>
+        <div class="accordion-content">
+            <p>
+                Backup your iPhone using iCloud by going to Settings > [Your Name] > iCloud > iCloud Backup, or by connecting your device to a computer and using iTunes (or Finder on macOS Catalina and later).
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 8 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            8. Can I use my iPhone with non-Apple accessories?
+        </div>
+        <div class="accordion-content">
+            <p>
+                Yes, iPhones are compatible with a variety of non-Apple accessories. However, for the best performance and integration, especially with charging and data transfer, certified accessories (MFi-certified) are recommended.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 9 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            9. How do I customize notifications on my iWatch?
+        </div>
+        <div class="accordion-content">
+            <p>
+                To customize notifications on your Apple Watch, open the Watch app on your iPhone, go to the Notifications section, and adjust the settings for each app as desired.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 10 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            10. What are the available storage options for the new iPhone?
+        </div>
+        <div class="accordion-content">
+            <p>
+                The latest iPhone models offer a range of storage options, typically starting from 64GB and going up to 512GB or even 1TB in some cases. Availability depends on the specific model and region.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 11 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            11. How do I secure my iPhone with Face ID or Touch ID?
+        </div>
+        <div class="accordion-content">
+            <p>
+                Secure your iPhone by setting up Face ID or Touch ID during the initial device setup or later in Settings > Face ID & Passcode (or Touch ID & Passcode). Follow the on-screen prompts to enroll your face or fingerprints.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 12 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            12. How do I transfer data from my old iPhone to a new one?
+        </div>
+        <div class="accordion-content">
+            <p>
+                Use Apple's Quick Start feature to transfer data wirelessly by placing both devices near each other, or use iCloud/iTunes backups to restore your new iPhone with your previous data.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 13 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            13. What are the differences between various iWatch models?
+        </div>
+        <div class="accordion-content">
+            <p>
+                Differences among Apple Watch models include size, materials, performance capabilities, available health sensors, and connectivity options. Check Apple’s official comparison charts for detailed specifications.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 14 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            14. How can I check for firmware updates on my iWatch?
+        </div>
+        <div class="accordion-content">
+            <p>
+                To check for firmware updates on your Apple Watch, open the Watch app on your iPhone, go to General > Software Update, and follow any prompts to install available updates.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 15 -->
+    <div class="accordion-item">
+        <div class="accordion-header bg-success">
+            15. How do I manage my app subscriptions on my iPhone?
+        </div>
+        <div class="accordion-content">
+            <p>
+                Manage subscriptions on your iPhone by navigating to Settings > [Your Name] > Subscriptions. Here you can view, change, or cancel your active subscriptions.
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Item 16 -->
+    <div class="accordion-item ">
+        <div class="accordion-header ">
+            16. What should I do if my iPhone freezes or becomes unresponsive?
+        </div>
+        <div class="accordion-content">
+            <p>
+                If your iPhone freezes, try forcing a restart. For most iPhone models, quickly press and release the Volume Up button, then the Volume Down button, and finally press and hold the Side button until the Apple logo appears.
+            </p>
+        </div>
+    </div>
+
+    <br> <br> <br> 
+</div>
+
+<script>
+    // JavaScript to handle accordion toggle
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            // Toggle active state on clicked header
+            header.classList.toggle('active');
+
+            // Collapse all other items
+            document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                if (otherHeader !== header) {
+                    otherHeader.classList.remove('active');
+                    otherHeader.nextElementSibling.style.maxHeight = null; // Collapse content
+                }
+            });
+
+            // Toggle accordion content visibility
+            const content = header.nextElementSibling;
+            if (header.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.paddingTop = '15px';
+                content.style.paddingBottom = '15px';
+            } else {
+                content.style.maxHeight = null; // Collapse content
+                content.style.paddingTop = '0';
+                content.style.paddingBottom = '0';
+            }
+        });
+    });
+</script>
+
+
+</body>
+</main>
+{% endblock content %}

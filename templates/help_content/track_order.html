@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Track Your Order</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+        }
+        .step {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">How to Track Your Order</h2>
+    <p>Tracking your order on is easy and ensures you stay updated on your delivery status.</p>
+
+    <h2>Tracking Steps</h2>
+    
+    <div class="step">
+        <h3>Step 1: Log in to Your Account</h3>
+        <ul>
+             <li>Go to <a href="{% url 'home' %}">Onlinetech.com</a> and log in to your account on menu dropdown list.</li>
+            <li>Enter your email and password to access your account.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Go to "My Orders"</h3>
+        <ul>
+            <li>Once logged in, click on your menu icon and select "Profile" from the dropdown menu.</li>
+            <li>You will see a list of all your recent purchases.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Select Your Order</h3>
+        <ul>
+            <li>Click on the specific order you want to track.</li>
+            <li>You'll be redirected to the order details page.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Track Your Order</h3>
+        <ul>
+            <li>On the order details page, you'll see the current status of your order, such as "processing" , "Sorting for shipping," or "Out for Delivery."</li>
+            <li>If the order has been shipped, you can find a tracking number and carrier details to track your package in real-time.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Receive Notifications</h3>
+        <ul>
+            <li>We sends email and SMS updates on your order status.</li>
+            <li>Enable notifications in your account settings to stay informed about your delivery.</li>
+        </ul>
+    </div>
+
+    <p>If you experience any issues tracking your order, contact Our customer support at 0711 011 011 for assistance.</p>
+</div>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+</body>
+</html>
