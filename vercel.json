@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "version": 2,
     "builds": [
       {
@@ -31,27 +30,4 @@
         "dest": "/static/$1"
       }
     ]
-  }
-=======
-  "version": 2,
-  "builds": [
-    {
-      "src": "ecom/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb",
-        "runtime": "python3.9",
-        "installCommand": "pip install --no-cache-dir --no-deps -r requirements.txt",
-        "includeFiles": ["ecom/**/*", "requirements.txt"],
-        "excludeFiles": ["**/*.pyc", "**/*.pyo", "**/__pycache__/**"]
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "ecom/wsgi.py"
-    }
-  ]
 }
->>>>>>> origin/main3
