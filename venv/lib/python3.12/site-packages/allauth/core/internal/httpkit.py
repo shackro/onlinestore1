@@ -4,6 +4,7 @@ from urllib.parse import parse_qs, quote, urlencode, urlparse, urlunparse
 from django import shortcuts
 from django.core.exceptions import ImproperlyConfigured
 from django.http import (
+    HttpRequest,
     HttpResponseRedirect,
     HttpResponseServerError,
     QueryDict,
@@ -83,7 +84,7 @@ def render_url(request, url_template, **kwargs):
     return url
 
 
-def get_frontend_url(request, urlname, **kwargs):
+def default_get_frontend_url(request, urlname, **kwargs):
     from allauth import app_settings as allauth_settings
 
     if allauth_settings.HEADLESS_ENABLED:
@@ -95,6 +96,16 @@ def get_frontend_url(request, urlname, **kwargs):
         if url:
             return render_url(request, url, **kwargs)
     return None
+
+
+def get_frontend_url(request, urlname, **kwargs):
+    from allauth import app_settings as allauth_settings
+
+    if allauth_settings.HEADLESS_ENABLED:
+        from allauth.headless.adapter import get_adapter
+
+        return get_adapter().get_frontend_url(urlname, **kwargs)
+    return default_get_frontend_url(request, urlname, **kwargs)
 
 
 def headed_redirect_response(viewname):
@@ -109,3 +120,7 @@ def headed_redirect_response(viewname):
             # The response we would be rendering here is not actually used.
             return HttpResponseServerError()
         raise
+
+
+def is_headless_request(request: HttpRequest) -> bool:
+    return bool(getattr(getattr(request, "allauth", None), "headless", None))

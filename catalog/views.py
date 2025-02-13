@@ -30,7 +30,7 @@ import logging
 from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
-from square.client import Client
+# from square.client import Client # type: ignore
 
 
 
@@ -360,28 +360,29 @@ class SquarePaymentView(View):
             return redirect('payment-failed')
 
 class creditcard(View):
-    def get(self, *args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
-        if self.request.method == 'POST':
-            form = CreditCardForm(self.request.POST)
-            if form.is_valid():
-                # Handle the submitted data here (e.g., send it to a payment gateway)
-                card_number = form.cleaned_data['card_number']
-                expiry_date = form.cleaned_data['expiry_date']
-                cvv = form.cleaned_data['cvv']
-                cardholder_name = form.cleaned_data['cardholder_name']
+    pass
+    # def get(self, *args, **kwargs):
+    #     order = Order.objects.get(user=self.request.user, ordered=False)
+    #     if self.request.method == 'POST':
+    #         form = CreditCardForm(self.request.POST)
+    #         if form.is_valid():
+    #             # Handle the submitted data here (e.g., send it to a payment gateway)
+    #             card_number = form.cleaned_data['card_number']
+    #             expiry_date = form.cleaned_data['expiry_date']
+    #             cvv = form.cleaned_data['cvv']
+    #             cardholder_name = form.cleaned_data['cardholder_name']
 
-                # For now, just return a success message
-                return HttpResponse("Credit Card Information Submitted Successfully!")
-        else:
-            form = CreditCardForm()      
+    #             # For now, just return a success message
+    #             return HttpResponse("Credit Card Information Submitted Successfully!")
+    #     else:
+    #         form = CreditCardForm()      
             
-            context = {
-                    'order': order,
-                    'DISPLAY_COUPON_FORM': False,
-                    'form': form,
-                }
-        return render(self.request, 'creditcard.html',context)
+    #         context = {
+    #                 'order': order,
+    #                 'DISPLAY_COUPON_FORM': False,
+    #                 'form': form,
+    #             }
+    #     return render(self.request, 'creditcard.html',context)
 
 
 class PaymentView(View):
